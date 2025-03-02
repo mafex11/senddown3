@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
     const roomId = formData.get('roomId') as string;
 
     console.log('Uploading file to room:', roomId);
+    console.log('Original file name:', file.name);
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
@@ -21,8 +22,9 @@ export async function POST(request: NextRequest) {
     const result = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         {
-          upload_preset: 'senddown', // Use your preset name here
-          folder: `rooms/${roomId}`, // Ensure folder structure matches fetch logic
+          upload_preset: 'senddown',
+          folder: `rooms/${roomId}`,
+          // Remove public_id to let Cloudinary generate a unique one
           resource_type: 'auto',
         },
         (error, result) => {

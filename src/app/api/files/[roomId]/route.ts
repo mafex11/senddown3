@@ -16,16 +16,39 @@ export async function GET(
     console.log('Fetching files for room ID:', roomId);
     console.log('Using prefix:', `rooms/${roomId}`);
 
-    const files = await cloudinary.api.resources({
-      type: 'upload', // Keep this for consistency with upload
-      prefix: `rooms/${roomId}`,
-      max_results: 100,
-      resource_type: 'raw', // Explicitly fetch raw resources
-    });
+    // Fetch all resource types
+    const [rawFiles, imageFiles, videoFiles] = await Promise.all([
+      cloudinary.api.resources({
+        type: 'upload',
+        prefix: `rooms/${roomId}`,
+        max_results: 100,
+        resource_type: 'raw',
+      }),
+      cloudinary.api.resources({
+        type: 'upload',
+        prefix: `rooms/${roomId}`,
+        max_results: 100,
+        resource_type: 'image',
+      }),
+      cloudinary.api.resources({
+        type: 'upload',
+        prefix: `rooms/${roomId}`,
+        max_results: 100,
+        resource_type: 'video',
+      }),
+    ]);
 
-    console.log('Cloudinary response:', files);
-    console.log('Resources found:', files.resources);
-    return NextResponse.json(files.resources, { status: 200 });
+    const allFiles = [
+      ...rawFiles.resources,
+      ...imageFiles.resources,
+      ...videoFiles.resources,
+    ];
+
+    console.log('Raw files:', rawFiles.resources);
+    console.log('Image files:', imageFiles.resources);
+    console.log('Video files:', videoFiles.resources);
+    console.log('All files combined:', allFiles);
+    return NextResponse.json(allFiles, { status: 200 });
   } catch (error) {
     console.error('Fetch error:', error);
     return NextResponse.json({ error: 'Failed to fetch files' }, { status: 500 });

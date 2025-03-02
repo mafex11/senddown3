@@ -1,5 +1,6 @@
 import './globals.css';
-import { ErrorBoundary } from './components/ErrorBoundary';
+import { ErrorBoundary } from '../components/ErrorBoundary';
+import { ThemeProvider } from "../components/theme-provider"
 
 export const metadata = {
   title: 'File Sharing App',
@@ -12,10 +13,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ErrorBoundary>
-          {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </ErrorBoundary>
       </body>
     </html>
