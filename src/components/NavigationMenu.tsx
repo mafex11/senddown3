@@ -68,10 +68,10 @@ export function NavigationMenuDemo() {
                   >
                     <div className="h-6 w-6" /> {/* Ensure Icons.logo exists */}
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      File Sharing App
+                      Share yo shit to diff devices
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Share files easily with rooms built using Next.js and Cloudinary.
+                      Share files easily with rooms. (just dont use it too much the storage is expensive)
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -105,6 +105,13 @@ export function NavigationMenuDemo() {
           <Link href="/About" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               About
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem> 
+        <NavigationMenuItem className="hidden lg:block">
+          <Link href="/About" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Click here
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem> 

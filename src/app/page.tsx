@@ -4,27 +4,24 @@
 import { NavigationMenuDemo } from '../components/NavigationMenu';
 import { Button } from '../components/ui/button';
 import Link from 'next/link';
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
-
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
 
   return (
     <div className="min-h-screen flex flex-col">
-      
       {/* Navigation Bar */}
-      <nav className="fixed  top-4 left-0 right-0 w-3/4 mx-auto max-w-7xl z-50 rounded-xl  shadow-md p-4">
+      <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold hidden lg:block ">SendDown</h1>
+          <h1 className="text-2xl font-bold hidden lg:block">Sh*tup</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -34,32 +31,35 @@ export default function Home() {
                 <span className="sr-only">Toggle theme</span>
               </Button>
             </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
-                    System
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setTheme("light")}>
+                Light
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>
+                Dark
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>
+                System
+              </DropdownMenuItem>
+            </DropdownMenuContent>
           </DropdownMenu>
         </div>
-          
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20"> {/* pt-20 to offset nav bar height */}
-        <h1 className="text-6xl font-bold mb-6 text-center">Welcome to SendDown</h1>
+      <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
+        <h1 className="text-6xl font-bold mb-6 text-center">
+          <span className="italic font-bold">NOT</span> welcome to SendUp
+        </h1>
         <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
-          Share files easily with others by creating or joining a room!
+          i know you want to share files to the computer but logging in whatsapp is a pain
         </blockquote>
-        <link href="/CreateRoom"><Button>Get Started</Button> </link>
-        
-       
-        
+        <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
+          Use this and thank me later 
+        </blockquote>
+        <Link href="/CreateRoom">
+          <Button>Get Started</Button>
+        </Link>
       </main>
     </div>
   );
