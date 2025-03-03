@@ -56,8 +56,8 @@ export default function Home() {
         <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
           Share files easily with others by creating or joining a room!
         </blockquote>
+        <link href="/CreateRoom"><Button>Get Started</Button> </link>
         
-        <Button href="/CreateRoom">Get Started</Button>
        
         
       </main>
