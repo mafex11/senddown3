@@ -15,22 +15,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
 
-export default function CreateRoom() {
+// Create a separate client component for handling URL parameters
+function CreateRoomClient() {
   const [roomId, setRoomId] = useState('');
   const [inputRoomId, setInputRoomId] = useState('');
   const { setTheme } = useTheme();
-  const searchParams = useSearchParams();
 
+  // Use useEffect with window.location instead of useSearchParams
   useEffect(() => {
-    // Check for roomId in URL parameters
-    const urlRoomId = searchParams.get('roomId');
-    if (urlRoomId) {
-      setRoomId(urlRoomId);
+    // Check for roomId in URL parameters using window.location
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlRoomId = urlParams.get('roomId');
+      if (urlRoomId) {
+        setRoomId(urlRoomId);
+      }
     }
-  }, [searchParams]);
+  }, []);
 
   const createRoom = async () => {
     const response = await axios.post('/api/room/create');
@@ -42,8 +44,7 @@ export default function CreateRoom() {
   };
 
   return (
-    
-    <div className="min-h-screen flex flex-col ">
+    <div className="min-h-screen flex flex-col">
       {/* Navigation Bar */}
       <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -139,4 +140,9 @@ export default function CreateRoom() {
     
     </div>
   );
+}
+
+// Main component that renders the client component
+export default function CreateRoom() {
+  return <CreateRoomClient />;
 }
