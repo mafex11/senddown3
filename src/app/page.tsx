@@ -49,7 +49,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
         <h1 className="text-6xl font-bold mb-6 text-center">
-          <span className="italic font-bold">NOT</span> welcome to SendUp
+          <span className="italic font-bold">*NOT*</span> welcome to SendUp
         </h1>
         <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
           i know you want to share files to the computer but logging in whatsapp is a pain
@@ -61,6 +61,20 @@ export default function Home() {
           <Button>Get Started</Button>
         </Link>
       </main>
+
+      <h1 className='text center flex-col mx-auto mb-4 text-gray-500'>Made by 
+        <a href="https://github.com/mafex11" 
+          className='italic font-bold underline text-blue-500' 
+          target="_blank" 
+          rel="noopener noreferrer"
+          >
+            @mafex11
+          </a> 
+             in a day. &lt;3</h1>
+             
+      <h1 className='text center flex-col mx-auto mb-6 text-gray-500'>
+      ©2025, Mafex Inc.
+      </h1>
     </div>
   );
 }

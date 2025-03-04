@@ -1,9 +1,19 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { v4 as uuidv4 } from 'uuid';
+// src/app/api/room/create/route.ts
+import { NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
+// Function to generate a 6-character random string
+function generateShortRoomId() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < 6; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+
+export async function POST() {
   try {
-    const roomId = uuidv4();
+    const roomId = generateShortRoomId();
     return NextResponse.json({ roomId }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to create room' }, { status: 500 });

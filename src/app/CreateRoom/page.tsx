@@ -1,7 +1,7 @@
 // src/app/createroom/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import FileRoom from '../../components/FileRoom';
 import { NavigationMenuDemo } from '../../components/NavigationMenu';
@@ -15,12 +15,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
 export default function CreateRoom() {
   const [roomId, setRoomId] = useState('');
   const [inputRoomId, setInputRoomId] = useState('');
-  const [isHovered, setIsHovered] = useState(false); // Track hover state
   const { setTheme } = useTheme();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Check for roomId in URL parameters
+    const urlRoomId = searchParams.get('roomId');
+    if (urlRoomId) {
+      setRoomId(urlRoomId);
+    }
+  }, [searchParams]);
 
   const createRoom = async () => {
     const response = await axios.post('/api/room/create');
@@ -34,10 +43,10 @@ export default function CreateRoom() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
       {/* Navigation Bar */}
-      <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 shadow-md rounded-xl p-4">
+        <div className="flex items-center justify-between">
           <h1
-            className="text-2xl font-bold hidden lg:block cursor-pointer"
+            className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
           >
             Sh*tup
@@ -75,23 +84,19 @@ export default function CreateRoom() {
             <h1 className="text-4xl font-bold text-center dark:text-gray-100">
               File Sharing Room
             </h1>
-            <div className="relative flex justify-center">
+            <div className="relative flex justify-center group">
               <h2
                 className="scroll-m-20 border-b text-center pb-2 text-md font-semibold tracking-tight text-gray-700 dark:text-gray-300"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
               >
                 make a private room for your private stuff
               </h2>
-              {isHovered && (
-                <Image
-                  src="/sus.png"
-                  alt="Suspicious image"
-                  width={100}
-                  height={100}
-                  className="absolute top-full mt-2 opacity-0 animate-fadeInOut"
-                />
-              )}
+              <Image
+                src="/sus.png"
+                alt="Suspicious image"
+                width={100}
+                height={100}
+                className="absolute top-full mt-2 left-1/2 translate-x-60 -translate-y-18 opacity-0 group-hover:opacity-100 group-hover:animate-fadeInOut transition-opacity duration-200"
+              />
             </div>
             <Button
               onClick={createRoom}
