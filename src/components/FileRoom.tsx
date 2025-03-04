@@ -6,6 +6,7 @@ import { CloudinaryResource } from '../app/types';
 import { useDropzone } from 'react-dropzone';
 import { Upload, X, QrCode } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
+import { Button } from '@/components/ui/button';
 
 export default function FileRoom({ roomId }: { roomId: string }) {
   const [files, setFiles] = useState<CloudinaryResource[]>([]);
@@ -50,7 +51,7 @@ export default function FileRoom({ roomId }: { roomId: string }) {
       });
       console.log('Files fetched successfully:', response.data);
     } catch (err) {
-      setError('Failed to load files');
+      setError('Failed to load files or api limit reached, please try again in 20 mins, or try donating');
       console.error('Error fetching files:', err);
     }
   };
@@ -104,7 +105,25 @@ export default function FileRoom({ roomId }: { roomId: string }) {
   const roomUrl = `https://sendupv3.vercel.app/CreateRoom?roomId=${roomId}`;
 
   if (error) {
-    return <div className="alert alert-error">{error}</div>;
+    return (
+      <div className="max-w-md mx-auto mt-8">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-start space-x-2 text-red-600 dark:text-red-400">
+              <X className="w-5 h-5 mt-0.5" />
+              <span>{error}</span>
+            </div>
+            <Button
+              variant="outline"
+              onClick={() => window.location.href = '/donate'}
+              className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              Support Sh*tup with a Donation
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

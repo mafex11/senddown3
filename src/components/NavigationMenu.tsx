@@ -68,10 +68,10 @@ export function NavigationMenuDemo() {
                   >
                     <div className="h-6 w-6" /> {/* Ensure Icons.logo exists */}
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Share yo shit to diff devices
+                      Share yo shit to diff devices with no bs
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Share files easily with rooms. (just dont use it too much the storage is expensive)
+                      Share files easily with rooms. (just don't use it too much the storage is expensive)
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -109,12 +109,19 @@ export function NavigationMenuDemo() {
           </Link>
         </NavigationMenuItem> 
         <NavigationMenuItem className="hidden lg:block">
-          <Link href="/About" legacyBehavior passHref>
+          <Link href="/ClickHere" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Click here
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem> 
+        <NavigationMenuItem className="hidden lg:block">
+          <Link href="/Donate" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Donate
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
       
     </NavigationMenu>

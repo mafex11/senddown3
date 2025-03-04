@@ -6,6 +6,7 @@ import { Button } from '../components/ui/button';
 import Link from 'next/link';
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { BackgroundLines } from "@/components/ui/background-lines";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,10 +19,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <BackgroundLines className="absolute inset-0 -z-10 opacity-20">
+        <></>
+      </BackgroundLines>
       {/* Navigation Bar */}
-      <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4">
+      <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold hidden lg:block">Sh*tup</h1>
+          <h1
+            className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
+            onClick={() => window.location.href = "/"}
+          >Sh*tup</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -62,17 +69,11 @@ export default function Home() {
         </Link>
       </main>
 
-      <h1 className='text center flex-col mx-auto mb-4 text-gray-500'>Made by 
-        <a href="https://github.com/mafex11" 
-          className='italic font-bold underline text-blue-500' 
-          target="_blank" 
-          rel="noopener noreferrer"
-          >
-            @mafex11
-          </a> 
-             in a day. &lt;3</h1>
-             
-      <h1 className='text center flex-col mx-auto mb-6 text-gray-500'>
+      <footer className="mt-8 text-center text-gray-600 dark:text-gray-400">
+        Made by <a href="https://github.com/mafex11" className="underline" target="_blank" rel="noopener noreferrer">@mafex11</a> in a day. &lt;3
+      </footer>
+
+      <h1 className='text center flex-col mx-auto mb-6 mt-2 text-gray-500'>
       ©2025, Mafex Inc.
       </h1>
     </div>

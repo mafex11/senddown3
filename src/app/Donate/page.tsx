@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 import { NavigationMenuDemo } from '../../components/NavigationMenu';
 import { Button } from '../../components/ui/button';
 import { Moon, Sun } from "lucide-react";
@@ -15,38 +17,47 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const donationItems = [
-  { name: 'Rent Due', amount: 50 },
-  { name: 'Buy Me Food', amount: 20 },
-  { name: 'Buy Me Coffee', amount: 2 },
-  { name: 'Support My Project', amount: 100 },
-  { name: 'Help with Bills', amount: 30 },
-];
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
-export default function ClickHerePage() {
-const { setTheme } = useTheme();
-  const [sortedItems, setSortedItems] = useState(donationItems);
+export default function DonatePage() {
+    const { setTheme } = useTheme();
+  const [amount, setAmount] = useState<string>('5');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSort = (order: string) => {
-    const sorted = [...donationItems].sort((a, b) => {
-      return order === 'asc' ? a.amount - b.amount : b.amount - a.amount;
-    });
-    setSortedItems(sorted);
-  };
-
-  const handleDonation = async (amount: number) => {
+  const handleDonation = async () => {
     setIsLoading(true);
     try {
       // Load Razorpay script
       await loadRazorpayScript();
+      
+      // Create order on your backend
+      const response = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: parseFloat(amount) * 100, // Convert to smallest currency unit
+        }),
+      });
+      
+      const order = await response.json();
+      
+      if (!order.id) {
+        throw new Error('Failed to create order');
+      }
 
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: amount * 100,
+        amount: parseFloat(amount) * 100,
         currency: "USD",
         name: "Sh*tup",
         description: "Thank you for supporting Sh*tup!",
+        order_id: order.id,
         handler: function (response: any) {
           toast.success("Thank you for your donation! Your support helps keep Sh*tup running.");
         },
@@ -80,7 +91,7 @@ const { setTheme } = useTheme();
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center  p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
         <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <h1
@@ -110,46 +121,61 @@ const { setTheme } = useTheme();
           </DropdownMenu>
         </div>
       </nav>
-
-      <Card className="w-full max-w-lg">
+      <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Choose a Donation Item</CardTitle>
+          <CardTitle>Support Sh*tup</CardTitle>
+          <CardDescription>
+            Your donation helps keep our servers running and enables us to provide better service.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="mb-4">
-            <Select onValueChange={handleSort} defaultValue="asc">
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Sort by Price" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="asc">Price: Low to High</SelectItem>
-                <SelectItem value="desc">Price: High to Low</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <ul className="space-y-4">
-            {sortedItems.map((item) => (
-              <li key={item.name} className="flex justify-between items-center">
-                <span>{item.name}</span>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="amount">Donation Amount (USD)</Label>
+              <div className="flex items-center space-x-2">
+                <Input
+                  id="amount"
+                  type="number"
+                  min="1"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  placeholder="Enter amount"
+                />
+                <span className="text-sm text-gray-500 dark:text-gray-400">USD</span>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[5, 10, 20, 50, 100].map((preset) => (
                 <Button
-                  onClick={() => handleDonation(item.amount)}
-                  disabled={isLoading}
-                  className="bg-blue-500 hover:bg-blue-600 text-white"
+                  key={preset}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setAmount(preset.toString())}
+                  className={amount === preset.toString() ? 'bg-blue-100 dark:bg-blue-900' : ''}
                 >
-                  Donate ${item.amount}
+                  ${preset}
                 </Button>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
         </CardContent>
+        <CardFooter>
+          <Button 
+            className="w-full" 
+            onClick={handleDonation}
+            disabled={isLoading || !amount || parseFloat(amount) <= 0}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Processing...
+              </>
+            ) : (
+              `Donate $${amount}`
+            )}
+          </Button>
+        </CardFooter>
       </Card>
-      <footer className="mt-8 text-center text-gray-600 dark:text-gray-400">
-        Made by <a href="https://github.com/mafex11" className="underline" target="_blank" rel="noopener noreferrer">@mafex11</a> in a day. &lt;3
-      </footer>
-
-      <h1 className='text center flex-col mx-auto mb-6 mt-2 text-gray-500'>
-      ©2025, Mafex Inc.
-      </h1>
     </div>
   );
-}
+} 
