@@ -3,8 +3,11 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 import { ThemeProvider } from "../components/theme-provider"
 
 export const metadata = {
-  title: 'File Sharing App',
-  description: 'Share files easily with rooms',
+  title: 'Send up',
+  description: 'Share files easily without BS',
+  icons: {
+    icon: '/Flow.png', // Update this to your favicon path
+  },
 };
 
 export default function RootLayout({
