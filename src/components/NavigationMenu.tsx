@@ -76,12 +76,15 @@ export function NavigationMenuDemo() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/CreateRoom" title="Create Room">
-                Start sharing files by creating a new room.
+              <ListItem href="/CreateRoom" title="Try now">
+                Start sharing files over devices.
               </ListItem>
-              {/* <ListItem href="/" title="About">
-                Learn why i made this.
-              </ListItem> */}
+              <ListItem href="/ClickHere" title="Pay my bills">
+                im going broke, pls help me pay my bills
+              </ListItem>
+              <ListItem href="/About" title="Know about this">
+                made this while vibe coding
+              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
