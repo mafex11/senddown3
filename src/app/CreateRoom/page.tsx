@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 export default function CreateRoom() {
   const [roomId, setRoomId] = useState('');
@@ -41,6 +42,8 @@ export default function CreateRoom() {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
+     
     <div className="min-h-screen flex flex-col ">
       {/* Navigation Bar */}
       <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
@@ -136,5 +139,7 @@ export default function CreateRoom() {
       </h1>
     
     </div>
+     
+     </Suspense>
   );
 }
