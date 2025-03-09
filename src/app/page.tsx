@@ -13,12 +13,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ShootingStars  } from "../components/ui/shooting-star";
+import { StarsBackground } from '@/components/ui/stars-background';
+import { Spotlight } from '../components/ui/spotlight';
+import { cn } from "@/lib/utils";
+
+type SpotlightProps = {
+  className?: string;
+  fill?: string;
+};
 
 export default function Home() {
   const { setTheme } = useTheme();
 
   return (
     <div className="min-h-screen flex flex-col">
+      
       <BackgroundLines className="absolute inset-0 -z-10 opacity-20">
         <></>
       </BackgroundLines>
@@ -55,9 +65,12 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
-        <h1 className="text-6xl font-bold mb-6 text-center">
-          <span className="italic font-bold">*NOT*</span> welcome to Flowsup
+      
+        <h1 className="relative flex-col md:flex-row z-10 text-3xl md:text-8xl md:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-black to-white dark:via-white flex items-center gap-2 md:gap-8 text-bold ">
+           Welcome to Flowsup
         </h1>
+        <ShootingStars />
+        <StarsBackground />
         <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
           i know you want to share files to the computer but it's a long process, but don't worry.
         </blockquote>
