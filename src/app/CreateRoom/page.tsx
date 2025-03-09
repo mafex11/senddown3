@@ -15,6 +15,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from 'next/image';
+import { ShootingStars  } from "@/components/ui/shooting-star";
+import { StarsBackground } from '@/components/ui/stars-background';
 
 // Create a separate client component for handling URL parameters
 function CreateRoomClient() {
@@ -45,6 +47,8 @@ function CreateRoomClient() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <ShootingStars />
+      <StarsBackground />
       {/* Navigation Bar */}
       <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

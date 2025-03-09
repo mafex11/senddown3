@@ -11,18 +11,26 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ShootingStars  } from "@/components/ui/shooting-star";
+import { StarsBackground } from '@/components/ui/stars-background';
 
+type SpotlightProps = {
+  className?: string;
+  fill?: string;
+};
 export default function AboutPage() {
     const { setTheme } = useTheme();
 
   return (
     <div>
+     <ShootingStars />
+     <StarsBackground />
         <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Sh*tup</h1>
+          >FlowUp</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -50,7 +58,7 @@ export default function AboutPage() {
     <div className="min-h-screen flex items-center  justify-center p-4">
       <Card className="w-full max-w-2xl">
         <CardHeader>
-          <CardTitle className="text-2xl">About Sh*tup and me</CardTitle>
+          <CardTitle className="text-2xl">About FlowUp and me</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-lg  ">

@@ -15,9 +15,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ShootingStars  } from "../components/ui/shooting-star";
 import { StarsBackground } from '@/components/ui/stars-background';
-import { Spotlight } from '../components/ui/spotlight';
+import { Spotlight } from '../components/ui/spotlight-new';
 import { cn } from "@/lib/utils";
 
+import { WavyBackground } from "../components/ui/wavy-background";
 type SpotlightProps = {
   className?: string;
   fill?: string;
@@ -27,6 +28,10 @@ export default function Home() {
   const { setTheme } = useTheme();
 
   return (
+    
+    <div className=" w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
+
+    
     <div className="min-h-screen flex flex-col">
       
       <BackgroundLines className="absolute inset-0 -z-10 opacity-20">
@@ -64,24 +69,32 @@ export default function Home() {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
       
-        <h1 className="relative flex-col md:flex-row z-10 text-3xl md:text-8xl md:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-black to-white dark:via-white flex items-center gap-2 md:gap-8 text-bold ">
+      
+      <WavyBackground className="max-w-4xl mx-auto pb-40 items-center justify-center flex-col flex flex-1">
+      <h1 className="relative flex-col md:flex-row z-10 text-5xl md:text-9xl md:leading-tight max-w-3xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-black to-white dark:via-white flex items-center gap-2 md:gap-8 text-bold ">
            Welcome to Flowsup
         </h1>
-        <ShootingStars />
-        <StarsBackground />
-        <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
-          i know you want to share files to the computer but it's a long process, but don't worry.
+        
+        <blockquote className=" pl-6 italic mb-8 text-xl text-center max-w-xl">
+          I know you want to share files across devices but it's a long process, don't worry.
         </blockquote>
       
-        <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
+        <blockquote className=" pl-6 italic mb-8 text-xl text-center max-w-xl">
           Use this and thank me later 
         </blockquote>
         <Link href="/CreateRoom">
           <Button>Get Started</Button>
         </Link>
+      </WavyBackground>
+      <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
+      <Spotlight/>
+      <ShootingStars />
+      <StarsBackground />
+       
+        
       </main>
+      
 
       <footer className="mt-8 text-center text-gray-600 dark:text-gray-400">
         Made by <a href="https://github.com/mafex11" className="underline" target="_blank" rel="noopener noreferrer">@mafex11</a> in a day. &lt;3
@@ -91,5 +104,7 @@ export default function Home() {
       ©2025, Mafex Inc.
       </h1>
     </div>
+    </div>
+    
   );
 }

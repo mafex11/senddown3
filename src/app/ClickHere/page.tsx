@@ -14,6 +14,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ShootingStars  } from "@/components/ui/shooting-star";
+import { StarsBackground } from '@/components/ui/stars-background';
 
 const donationItems = [
   { name: 'Rent Due', amount: 50 },
@@ -81,12 +83,14 @@ const { setTheme } = useTheme();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center  p-4">
+      <ShootingStars />
+      <StarsBackground />
         <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Sh*tup</h1>
+          >FlowUp</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -134,7 +138,7 @@ const { setTheme } = useTheme();
                 <Button
                   onClick={() => handleDonation(item.amount)}
                   disabled={isLoading}
-                  className="bg-blue-500 hover:bg-blue-600 text-white"
+                  className="bg-blue-500 hover:bg-blue-600 text-white min-w-28"
                 >
                   Donate ${item.amount}
                 </Button>

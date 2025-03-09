@@ -16,6 +16,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ShootingStars  } from "@/components/ui/shooting-star";
+import { StarsBackground } from '@/components/ui/stars-background';
 
 declare global {
   interface Window {
@@ -92,12 +94,14 @@ export default function DonatePage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
+      <ShootingStars />
+      <StarsBackground />
         <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Sh*tup</h1>
+          >FlowUp</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -123,7 +127,7 @@ export default function DonatePage() {
       </nav>
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Support Sh*tup</CardTitle>
+          <CardTitle>Support FlowUp</CardTitle>
           <CardDescription>
             Your donation helps keep our servers running and enables us to provide better service.
           </CardDescription>
