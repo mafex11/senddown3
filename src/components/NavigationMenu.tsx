@@ -68,7 +68,7 @@ export function NavigationMenuDemo() {
                   >
                     <div className="h-6 w-6" /> {/* Ensure Icons.logo exists */}
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Share yo shit to diff devices with no bs
+                      Share your files seemlessly without BS
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Share files easily with rooms. (just don't use it too much the storage is expensive)
@@ -79,10 +79,10 @@ export function NavigationMenuDemo() {
               <ListItem href="/CreateRoom" title="Try now">
                 Start sharing files over devices.
               </ListItem>
-              <ListItem href="/ClickHere" title="Pay my bills">
+              <ListItem href="/ClickHere" title="Donate">
                 im going broke, pls help me pay my bills
               </ListItem>
-              <ListItem href="/About" title="Know about this">
+              <ListItem href="/About" title="Know more">
                 made this while vibe coding
               </ListItem>
             </ul>

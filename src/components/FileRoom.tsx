@@ -1,10 +1,11 @@
+// src/app/components/FileRoom.tsx
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { CloudinaryResource } from '../app/types';
 import { useDropzone } from 'react-dropzone';
-import { Upload, X, QrCode } from 'lucide-react';
+import { Upload, X, QrCode, Copy } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button } from '@/components/ui/button';
 
@@ -15,12 +16,10 @@ export default function FileRoom({ roomId }: { roomId: string }) {
   const [error, setError] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [showQR, setShowQR] = useState(false);
+  const [isCopied, setIsCopied] = useState(false); // New state for copy feedback
 
   useEffect(() => {
-    // Initial fetch
     fetchFiles();
-
-    // Poll every 5 seconds
     const interval = setInterval(fetchFiles, 5000);
     return () => clearInterval(interval);
   }, [roomId]);
@@ -29,21 +28,16 @@ export default function FileRoom({ roomId }: { roomId: string }) {
     try {
       console.log(`Fetching files for room: ${roomId}`);
       const response = await axios.get(`/api/files/${roomId}`);
-      
-      // Update files only with new or changed items
       setFiles((prevFiles) => {
         const newFiles = response.data;
-        // Merge new files with existing ones, avoiding duplicates
         const updatedFiles = [...prevFiles];
         newFiles.forEach((newFile: CloudinaryResource) => {
           const existingIndex = updatedFiles.findIndex(
             (file) => file.public_id === newFile.public_id
           );
           if (existingIndex === -1) {
-            // Add new file if not already present
             updatedFiles.push(newFile);
           } else {
-            // Update existing file if it has changed (e.g., size or version)
             updatedFiles[existingIndex] = newFile;
           }
         });
@@ -51,7 +45,7 @@ export default function FileRoom({ roomId }: { roomId: string }) {
       });
       console.log('Files fetched successfully:', response.data);
     } catch (err) {
-      setError('Failed to load files or api limit reached, please try again in 20 mins, or try donating');
+      setError('Failed to load files or API limit reached, please try again in 20 mins, or try donating');
       console.error('Error fetching files:', err);
     }
   };
@@ -65,19 +59,17 @@ export default function FileRoom({ roomId }: { roomId: string }) {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    multiple: false
+    multiple: false,
   });
 
   const handleUpload = async (file: File) => {
     setIsUploading(true);
     setUploadProgress(0);
     console.log('Sending file:', file.name);
-    
     try {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('roomId', roomId);
-
       console.log('Uploading file to Cloudinary...');
       const response = await axios.post('/api/upload', formData, {
         onUploadProgress: (progressEvent) => {
@@ -87,7 +79,6 @@ export default function FileRoom({ roomId }: { roomId: string }) {
           setUploadProgress(progress);
         },
       });
-      
       console.log('File uploaded successfully:', response.data);
       await fetchFiles();
       setSelectedFile(null);
@@ -103,6 +94,12 @@ export default function FileRoom({ roomId }: { roomId: string }) {
   };
 
   const roomUrl = `https://sendupv3.vercel.app/CreateRoom?roomId=${roomId}`;
+
+  const handleCopyRoomId = () => {
+    navigator.clipboard.writeText(roomId);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+  };
 
   if (error) {
     return (
@@ -129,7 +126,21 @@ export default function FileRoom({ roomId }: { roomId: string }) {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Room: {roomId}</h1>
+        <div className="flex items-center ">
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Room: {roomId}</h1>
+          <button
+            onClick={handleCopyRoomId}
+            className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
+            title="Copy Room ID"
+          >
+            <Copy className="w-5 h-5" />
+          </button>
+          {isCopied && (
+            <span className="text-sm text-green-500 dark:text-green-400 animate-fadeInOut relative ">
+              Copied!
+            </span>
+          )}
+        </div>
         <button
           onClick={() => setShowQR(!showQR)}
           className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
@@ -171,7 +182,7 @@ export default function FileRoom({ roomId }: { roomId: string }) {
           </div>
         </div>
       )}
-      
+
       <div className="mb-8">
         <div
           {...getRootProps()}

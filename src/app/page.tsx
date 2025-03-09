@@ -28,7 +28,7 @@ export default function Home() {
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Sh*tup</h1>
+          >Flowsup</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -56,11 +56,12 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
         <h1 className="text-6xl font-bold mb-6 text-center">
-          <span className="italic font-bold">*NOT*</span> welcome to SendUp
+          <span className="italic font-bold">*NOT*</span> welcome to Flowsup
         </h1>
         <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
-          i know you want to share files to the computer but logging in whatsapp is a pain
+          i know you want to share files to the computer but it's a long process, but don't worry.
         </blockquote>
+      
         <blockquote className="border-l-2 pl-6 italic mb-8 text-xl text-center max-w-xl">
           Use this and thank me later 
         </blockquote>

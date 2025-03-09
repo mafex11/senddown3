@@ -51,7 +51,7 @@ function CreateRoomClient() {
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Sh*tup</h1>
+          >Flowsup</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -81,13 +81,13 @@ function CreateRoomClient() {
         {!roomId ? (
           <div className="w-full max-w-md space-y-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-lg">
             <h1 className="text-4xl font-bold text-center dark:text-gray-100">
-              File Sharing Room
+            Secure Sharing Room
             </h1>
             <div className="relative flex justify-center group">
               <h2
                 className="scroll-m-20 border-b text-center pb-2 text-md font-semibold tracking-tight text-gray-700 dark:text-gray-300"
               >
-                make a private room for your private stuff
+               Create a private space for your personal content.
               </h2>
               <Image
                 src="/sus.png"
@@ -99,9 +99,9 @@ function CreateRoomClient() {
             </div>
             <Button
               onClick={createRoom}
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors duration-200"
+              className="w-full py-3 px-4 bg-gray-700 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors duration-200"
             >
-              Create New Room
+             Create a New Room
             </Button>
             <div className="divider text-gray-500 dark:text-gray-400">OR</div>
             <div className="space-y-2">
