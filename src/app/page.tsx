@@ -76,7 +76,7 @@ export default function Home() {
            Welcome to Flowsup
         </h1>
         
-        <blockquote className=" pl-6 italic mb-8 text-xl text-center max-w-xl">
+        <blockquote className=" pl-6 italic mb-8 text-xl text-center max-w-xl mx-auto pr-6">
           I know you want to share files across devices but it's a long process, don't worry.
         </blockquote>
       
