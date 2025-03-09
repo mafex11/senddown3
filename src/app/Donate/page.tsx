@@ -101,7 +101,7 @@ export default function DonatePage() {
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >FlowUp</h1>
+          >Sendrn</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -125,7 +125,8 @@ export default function DonatePage() {
           </DropdownMenu>
         </div>
       </nav>
-      <Card className="w-full max-w-md">
+      
+      <Card className="w-full max-w-md absolute pl-2 pr-2">
         <CardHeader>
           <CardTitle>Support FlowUp</CardTitle>
           <CardDescription>
@@ -163,6 +164,7 @@ export default function DonatePage() {
             </div>
           </div>
         </CardContent>
+        
         <CardFooter>
           <Button 
             className="w-full" 
@@ -180,6 +182,7 @@ export default function DonatePage() {
           </Button>
         </CardFooter>
       </Card>
+      
     </div>
   );
 } 

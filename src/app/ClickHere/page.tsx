@@ -18,11 +18,11 @@ import { ShootingStars  } from "@/components/ui/shooting-star";
 import { StarsBackground } from '@/components/ui/stars-background';
 
 const donationItems = [
-  { name: 'Rent Due', amount: 50 },
-  { name: 'Buy Me Food', amount: 20 },
-  { name: 'Buy Me Coffee', amount: 2 },
-  { name: 'Support My Project', amount: 100 },
-  { name: 'Help with Bills', amount: 30 },
+  { name: 'Rent', amount: 50 },
+  { name: 'Food', amount: 20 },
+  { name: 'Coffee', amount: 2 },
+  { name: 'Support me', amount: 100 },
+  { name: 'Help with Bills pls', amount: 30 },
 ];
 
 export default function ClickHerePage() {
@@ -90,7 +90,7 @@ const { setTheme } = useTheme();
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >FlowUp</h1>
+          >Sendrn</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -58,11 +58,11 @@ export default function AboutPage() {
     <div className="min-h-screen flex items-center  justify-center p-4">
       <Card className="w-full max-w-2xl">
         <CardHeader>
-          <CardTitle className="text-2xl">About FlowUp and me</CardTitle>
+          <CardTitle className="text-2xl">About Sendrn and me</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-lg  ">
-            I'm a third year student, and I made this app because I often found myself needing to share files from my phone to random computers, like those connected to printers. The process was frustrating: I had to open an incognito window, log into web.whatsapp, and wait for it to sync, which could take ages if the network was bad. Then, I had to download the file and print it. It was a hassle to share files across random computers, so I built this app to make the process easier and faster.
+            I'm 20 years old, a third year CSE student, and I made this app because I often found myself needing to share files from my phone to random computers, like those connected to printers. The process was frustrating: I had to open an incognito window, log into web.whatsapp, and wait for it to sync, which could take ages if the network was bad. Then, I had to download the file and print it. It was a hassle to share files across random computers, so I built this app to make the process easier and faster.
 
           </p>
           <h1 className='text-lg  '>

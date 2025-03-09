@@ -43,7 +43,7 @@ export default function Home() {
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Flowsup</h1>
+          >Sendrn</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -73,7 +73,7 @@ export default function Home() {
       
       <WavyBackground className="max-w-4xl mx-auto pb-40 items-center justify-center flex-col flex flex-1">
       <h1 className="relative flex-col md:flex-row z-10 text-5xl md:text-9xl md:leading-tight max-w-3xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-black to-white dark:via-white flex items-center gap-2 md:gap-8 text-bold ">
-           Welcome to Flowsup
+           Welcome to Sendrn
         </h1>
         
         <blockquote className=" pl-6 italic mb-8 text-xl text-center max-w-xl mx-auto pr-6">

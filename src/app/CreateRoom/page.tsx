@@ -55,7 +55,7 @@ function CreateRoomClient() {
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
-          >Flowsup</h1>
+          >Sendrn</h1>
           <NavigationMenuDemo />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
