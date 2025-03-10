@@ -82,11 +82,11 @@ const { setTheme } = useTheme();
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center  p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 ">
       <ShootingStars />
       <StarsBackground />
         <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between ">
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
@@ -115,7 +115,7 @@ const { setTheme } = useTheme();
         </div>
       </nav>
 
-      <Card className="w-full max-w-lg">
+      <Card className="w-full max-w-lg absolute pl-2 pr-2">
         <CardHeader>
           <CardTitle>Choose a Donation Item</CardTitle>
         </CardHeader>

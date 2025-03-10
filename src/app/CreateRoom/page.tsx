@@ -81,9 +81,9 @@ function CreateRoomClient() {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center p-8 pt-20">
+      <main className="flex-1 flex items-center justify-center p-8 pt-20 ">
         {!roomId ? (
-          <div className="w-full max-w-md space-y-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+          <div className="w-full max-w-md space-y-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-lg ">
             <h1 className="text-4xl font-bold text-center dark:text-gray-100">
             Secure Sharing Room
             </h1>
@@ -103,7 +103,7 @@ function CreateRoomClient() {
             </div>
             <Button
               onClick={createRoom}
-              className="w-full py-3 px-4 bg-gray-700 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors duration-200"
+              className="w-full py-3 px-4 bg-gray-700 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-colors duration-200 "
             >
              Create a New Room
             </Button>

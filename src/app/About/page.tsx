@@ -55,8 +55,8 @@ export default function AboutPage() {
         </div>
       </nav>
     
-    <div className="min-h-screen flex items-center  justify-center p-4">
-      <Card className="w-full max-w-2xl">
+    <div className="min-h-screen flex items-center  justify-center p-4 ">
+      <Card className="w-full max-w-2xl absolute">
         <CardHeader>
           <CardTitle className="text-2xl">About Sendrn and me</CardTitle>
         </CardHeader>
