@@ -47,7 +47,7 @@ const { setTheme } = useTheme();
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: amount * 100,
         currency: "USD",
-        name: "Sh*tup",
+        name: "Sendrn",
         description: "Thank you for supporting Sh*tup!",
         handler: function (response: any) {
           toast.success("Thank you for your donation! Your support helps keep Sh*tup running.");

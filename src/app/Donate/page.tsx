@@ -128,7 +128,7 @@ export default function DonatePage() {
       
       <Card className="w-full max-w-md absolute pl-2 pr-2">
         <CardHeader>
-          <CardTitle>Support FlowUp</CardTitle>
+          <CardTitle>Support Sendrn</CardTitle>
           <CardDescription>
             Your donation helps keep our servers running and enables us to provide better service.
           </CardDescription>
