@@ -93,7 +93,7 @@ export default function FileRoom({ roomId }: { roomId: string }) {
     }
   };
 
-  const roomUrl = `https://sendupv3.vercel.app/CreateRoom?roomId=${roomId}`;
+  const roomUrl = `https://sendrn.vercel.app/CreateRoom?roomId=${roomId}`;
 
   const handleCopyRoomId = () => {
     navigator.clipboard.writeText(roomId);
