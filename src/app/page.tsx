@@ -39,7 +39,7 @@ export default function Home() {
       </BackgroundLines>
       {/* Navigation Bar */}
       <nav className="fixed top-4 left-0 right-0 w-3/4 mx-auto max-w-4xl z-50 rounded-xl shadow-md p-4 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className=" mx-auto flex items-center justify-between">
           <h1
             className="text-2xl font-bold text-gray-800 dark:text-gray-100 hidden lg:block cursor-pointer"
             onClick={() => window.location.href = "/"}
@@ -71,7 +71,7 @@ export default function Home() {
       {/* Main Content */}
       
       
-      <WavyBackground className="max-w-4xl mx-auto pb-40 items-center justify-center flex-col flex flex-1">
+      <WavyBackground className="max-w-4xl mx-auto pb-40 items-center justify-center flex-col flex flex-1 ">
       <h1 className="relative flex-col md:flex-row z-10 text-5xl md:text-9xl md:leading-tight max-w-3xl mx-auto text-center tracking-tight font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-black to-white dark:via-white flex items-center gap-2 md:gap-8 text-bold ">
            Welcome to Sendrn
         </h1>
@@ -83,20 +83,24 @@ export default function Home() {
         <blockquote className=" pl-6 italic mb-8 text-xl text-center max-w-xl">
           Use this and thank me later 
         </blockquote>
+
+        <blockquote className=" pl-6 italic mb-8 text-sm text-center text-red-600 max-w-xl">
+          There's some issues regarding downloading of files like .pdf and .ppt, im working on the fix.
+        </blockquote>
+
         <Link href="/CreateRoom">
           <Button>Get Started</Button>
         </Link>
       </WavyBackground>
-      <main className="flex-1 flex flex-col items-center justify-center p-8 pt-20">
+      <main className="flex-1 flex flex-col items-center justify-center p-8 ">
       <Spotlight/>
       <ShootingStars />
       <StarsBackground />
        
-        
       </main>
       
 
-      <footer className="mt-8 text-center text-gray-600 dark:text-gray-400">
+      <footer className=" text-center text-gray-600 dark:text-gray-400">
         Made by <a href="https://github.com/mafex11" className="underline" target="_blank" rel="noopener noreferrer">@mafex11</a> in a day. &lt;3
       </footer>
 

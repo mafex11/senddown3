@@ -81,7 +81,7 @@ function CreateRoomClient() {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center p-8 pt-20 ">
+      <main className="flex-1 flex items-center justify-center p-8 pt-20 overflow-y-auto mt-6">
         {!roomId ? (
           <div className="w-full max-w-md space-y-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-lg ">
             <h1 className="text-4xl font-bold text-center dark:text-gray-100">
@@ -139,7 +139,7 @@ function CreateRoomClient() {
       </footer>
 
       <h1 className='text center flex-col mx-auto mb-6 mt-2 text-gray-500'>
-      ©2025, Mafex Inc.
+      &copy;2025, Mafex Inc.
       </h1>
     
     </div>
