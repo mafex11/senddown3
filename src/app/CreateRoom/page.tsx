@@ -46,7 +46,7 @@ function CreateRoomClient() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       <ShootingStars />
       <StarsBackground />
       {/* Navigation Bar */}
@@ -57,7 +57,7 @@ function CreateRoomClient() {
             onClick={() => window.location.href = "/"}
           >Sendrn</h1>
           <NavigationMenuDemo />
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -76,12 +76,12 @@ function CreateRoomClient() {
                 System
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center p-8 pt-20 overflow-y-auto mt-6">
+      <main className="flex-1 flex items-center justify-center p-8 pt-20 overflow-y-auto mt-6 z-50">
         {!roomId ? (
           <div className="w-full max-w-md space-y-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 shadow-lg ">
             <h1 className="text-4xl font-bold text-center dark:text-gray-100">

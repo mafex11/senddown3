@@ -1,0 +1,11 @@
+{
+  "name": "Sendrn",
+  "short_name": "Sendrn",
+  "description": "File sharing application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [],
+  "serviceworker": {}
+}

@@ -11,11 +11,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const amount = body.amount;
 
+    console.log('Received amount:', amount);
+
     const options = {
-      amount: amount,
+      amount: amount, // Convert to smallest currency unit (cents)
       currency: "USD",
       receipt: `receipt_${Date.now()}`,
-    };
+      payment_capture: 1    };
 
     const order = await razorpay.orders.create(options);
     return NextResponse.json(order);
