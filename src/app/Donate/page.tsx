@@ -54,7 +54,7 @@ export default function DonatePage() {
       }
 
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        key: process.env.RAZORPAY_KEY_ID,
         amount: parseFloat(amount) * 100,
         currency: "USD",
         name: "Sh*tup",

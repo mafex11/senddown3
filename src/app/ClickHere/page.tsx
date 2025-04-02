@@ -44,7 +44,7 @@ const { setTheme } = useTheme();
       await loadRazorpayScript();
 
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        key: process.env.RAZORPAY_KEY_ID,
         amount: amount * 100,
         currency: "USD",
         name: "Sendrn",
